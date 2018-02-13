@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false" scan="true" scanPeriod="60 seconds">
-    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+<!--    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />-->
     <!-- 控制台输出日志 -->
     <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
+        <!-- 日志输出编码 -->
+        <Encoding>UTF-8</Encoding>
+        <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>%clr(%d{HH:mm:ss.SSS}){faint} > %clr(${LOG_LEVEL_PATTERN:-%5p}) %logger{35} - %m%n</pattern>
+        </layout>>
+    </appender>
+
+    <!-- 日志输出 到文件-->
+    <appender name="File" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>./logs/%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>270</maxHistory><!--日志最大保存时间-->
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} > %-5level %logger{35} - %m%n</pattern>
         </encoder>
     </appender>
-    <logger name="org.springframework.web" level="DEBUG" />
-
-    <root level="debug">
+   <logger name="org.springframework" level="DEBUG"/>
+    <logger name="com.yh.demo.activemq" level="ERROR" />
+    <root level="INFO">
         <appender-ref ref="Console"/>
+        <appender-ref ref="File"/>
     </root>
 </configuration>

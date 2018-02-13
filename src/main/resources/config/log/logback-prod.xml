@@ -19,7 +19,6 @@
     </appender>
 
     <root level="ERROR">
-        <appender-ref ref="Console"/>
         <appender-ref ref="File"/>
     </root>
 </configuration>

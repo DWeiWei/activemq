@@ -4,4 +4,5 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
     <import resource="classpath:/config/spring/spring-mvc.xml"/>
+    <import resource="classpath:/config/spring/spring-amq.xml"/>
 </beans>

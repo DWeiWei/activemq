@@ -21,11 +21,16 @@ public class TestDemo {
 
     @Test
     public void test() {
+
         queueSender.send("test.queue","queue111");
         topicSender.send("test.topic","topic111");
     }
 
     @Test
     public void test1() {
+        logger.info("日志测试[info]");
+        logger.debug("日志测试[debug]");
+        logger.error("日志测试[error]");
+
     }
 }
