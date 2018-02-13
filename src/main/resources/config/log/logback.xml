@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true" scanPeriod="60 seconds">
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+    <!-- 控制台输出日志 -->
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%clr(%d{HH:mm:ss.SSS}){faint} > %clr(${LOG_LEVEL_PATTERN:-%5p}) %logger{35} - %m%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="org.springframework.web" level="DEBUG" />
+
+    <root level="debug">
+        <appender-ref ref="Console"/>
+    </root>
+</configuration>
