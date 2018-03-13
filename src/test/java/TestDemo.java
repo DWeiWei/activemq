@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Arrays;
+import java.util.List;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-amq.xml")
@@ -19,6 +22,8 @@ public class TestDemo {
     @Autowired
     private TopicSender topicSender;
 
+    private List<Integer> list = Arrays.asList( 1, 2, 3 );
+
     @Test
     public void test() {
 
@@ -26,11 +31,19 @@ public class TestDemo {
         topicSender.send("test.topic","topic111");
     }
 
+    /**
+     * lambda表达式
+     */
     @Test
     public void test1() {
-        logger.info("日志测试[info]");
-        logger.debug("日志测试[debug]");
-        logger.error("日志测试[error]");
+       // list.forEach(System.out::println);
+      //  list.forEach(a-> System.out.println(a));
+        //.Stream函数式操作流元素集合
+    /*    list.stream().filter(term -> term!=null)
+                .distinct()
+                .mapToInt(num -> num*2)
+               // .peek(System.out::println)
+                .forEach(System.out::println);*/
 
     }
 }
